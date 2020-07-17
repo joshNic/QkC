@@ -9,7 +9,7 @@ import com.example.qkc.data.db.entity.User
 import com.example.qkc.databinding.ActivityLoginBinding
 import com.example.qkc.ui.util.hide
 import com.example.qkc.ui.util.show
-import com.example.qkc.ui.util.toast
+import com.example.qkc.ui.util.snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), AuthListener {
@@ -31,11 +31,11 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     override fun onSuccess(user: User) {
         progress_bar.hide()
-        toast("${user.name} is Logged In")
+        root_layout.snackbar("${user.name} is Logged In")
     }
 
     override fun onFailure(message: String) {
         progress_bar.hide()
-        toast(message)
+        root_layout.snackbar(message)
     }
 }
