@@ -1,8 +1,7 @@
 package com.example.qkc.data.network
 
 import com.example.qkc.data.network.response.AuthResponse
-import okhttp3.ResponseBody
-import retrofit2.Call
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,9 +20,15 @@ interface ApiService {
 
 
     companion object{
-        operator fun invoke() : ApiService{
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ) : ApiService{
+            val okkHttpclient = OkHttpClient.Builder()
+                .addInterceptor(networkConnectionInterceptor)
+                .build()
             return Retrofit.Builder()
                 .baseUrl("https://api.simplifiedcoding.in/course-apis/mvvm/")
+                .client(okkHttpclient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ApiService::class.java)

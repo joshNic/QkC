@@ -10,6 +10,7 @@ import com.example.qkc.R
 import com.example.qkc.data.db.AppDatabase
 import com.example.qkc.data.db.entity.User
 import com.example.qkc.data.network.ApiService
+import com.example.qkc.data.network.NetworkConnectionInterceptor
 import com.example.qkc.data.repository.UserRepository
 import com.example.qkc.databinding.ActivityLoginBinding
 import com.example.qkc.ui.home.HomeActivity
@@ -22,7 +23,8 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val api = ApiService()
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
+        val api = ApiService(networkConnectionInterceptor)
         val db = AppDatabase(this)
         val repository = UserRepository(api, db)
         val factory = AuthViewModelFactory(repository)

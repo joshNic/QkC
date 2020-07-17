@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.qkc.data.repository.UserRepository
 import com.example.qkc.ui.util.ApiException
 import com.example.qkc.ui.util.Coroutines
+import com.example.qkc.ui.util.NoInternetException
 
 class AuthViewModel(
     private val repository: UserRepository
@@ -33,6 +34,8 @@ class AuthViewModel(
                 }
                 authListener?.onFailure(authResponse.message!!)
             } catch (e: ApiException) {
+                authListener?.onFailure(e.message!!)
+            }catch (e: NoInternetException){
                 authListener?.onFailure(e.message!!)
             }
         }
