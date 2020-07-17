@@ -6,6 +6,7 @@ import com.example.qkc.data.network.ApiService
 import com.example.qkc.data.network.NetworkConnectionInterceptor
 import com.example.qkc.data.repository.UserRepository
 import com.example.qkc.ui.auth.AuthViewModelFactory
+import com.example.qkc.ui.home.profile.ProfileViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -24,6 +25,7 @@ class QkCApplication: Application(), KodeinAware {
         bind() from singleton { AppDatabase(instance()) }
         bind() from singleton { UserRepository(instance(), instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
+        bind() from provider { ProfileViewModelFactory(instance()) }
 
     }
 
