@@ -13,13 +13,11 @@
 
     </data>
 
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:background="#E2E2E2"
         android:layout_height="match_parent"
-        tools:context=".ui.auth.LoginActivity">
+        tools:context=".ui.auth.SignupActivity">
 
 
         <RelativeLayout
@@ -28,7 +26,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="45dp"
                 android:id="@+id/image_view_logo"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/ic_app_logo"
@@ -72,10 +70,22 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:text="@={viewmodel.email}"
+                    android:hint="Belal Khan"
+                    android:inputType="text"
+                    android:text="@={viewmodel.name}"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_name"
+                    android:background="@drawable/edit_text_round_gray_background"
+                    android:layout_width="match_parent"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_height="match_parent"/>
+
+                <EditText
                     android:hint="belal@gmail.com"
                     android:inputType="textEmailAddress"
                     android:drawablePadding="16dp"
+                    android:text="@={viewmodel.email}"
                     android:drawableLeft="@drawable/ic_email"
                     android:background="@drawable/edit_text_round_gray_background"
                     android:layout_width="match_parent"
@@ -84,9 +94,21 @@
                     android:layout_height="match_parent"/>
 
                 <EditText
-                    android:text="@={viewmodel.password}"
                     android:inputType="textPassword"
                     android:hint="password"
+                    android:text="@={viewmodel.password}"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:background="@drawable/edit_text_round_gray_background"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:layout_height="match_parent"/>
+
+                <EditText
+                    android:inputType="textPassword"
+                    android:hint="confirm password"
+                    android:text="@={viewmodel.passwordconfirm}"
                     android:drawablePadding="16dp"
                     android:drawableLeft="@drawable/ic_lock"
                     android:background="@drawable/edit_text_round_gray_background"
@@ -104,10 +126,10 @@
                     android:layout_height="wrap_content"/>
 
                 <Button
-                    android:onClick="@{viewmodel::onLoginButtonClick}"
                     android:layout_gravity="center_horizontal"
                     android:textAllCaps="false"
-                    android:text="Sign In"
+                    android:text="Sign Up"
+                    android:onClick="@{viewmodel::onSignupButtonClick}"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"/>
 
@@ -116,12 +138,12 @@
             <TextView
                 android:layout_marginTop="12dp"
                 android:textColor="@color/colorPrimary"
-                android:onClick="@{viewmodel::onSignup}"
                 android:layout_centerHorizontal="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_below="@id/linearLayout2"
                 android:textAlignment="center"
-                android:text="Don't have an account?\nSign Up Here"
+                android:onClick="@{viewmodel::onLogin}"
+                android:text="Already have an account?\nSign in Here"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal" />
@@ -137,5 +159,4 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>
