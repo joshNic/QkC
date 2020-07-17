@@ -1,9 +1,9 @@
 package com.example.qkc.ui.auth
 
-import androidx.lifecycle.LiveData
+import com.example.qkc.data.db.entity.User
 
 interface AuthListener {
     fun onStarted()
-    fun onSuccess(loginResponse: LiveData<String>)
+    fun onSuccess(user: User)
     fun onFailure(message: String)
 }
